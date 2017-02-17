@@ -7,8 +7,8 @@ import Promise from 'bluebird';
 function mockQuery(term) {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
-      resolve(['watson', 'wilson', 'wally', 'wombat']);
-    }, 500);
+      resolve(['watson', 'wilson', 'wally', 'wombat', 'wallace', 'philip', 'philis']);
+    }, 1000);
   });
 }
 
@@ -46,14 +46,21 @@ class App extends Component {
     const lastWordIndex = nextState.words.length - 1;
     if (_.last(nextState.usernameIndices) === lastWordIndex) {
       let query = spliceToken(nextState.words[lastWordIndex]);
-      if (this.trie.get(query).length === 0 && query.length > 2) {
+
+      if (query.length < 3) {
+        return;
+      }
+
+      if (this.trie.get(query).length === 0) {
         this.setState({loadingSuggestions: true});
+
         mockQuery(query)
           .then((_suggestions) => {
             this.trie = trie.from(_suggestions);
             const suggestions = this.trie.get(query);
             this.setState({loadingSuggestions: false, suggestions, isEmpty: suggestions.length === 0});
           });
+
       } else {
         this.setState({suggestions: this.trie.get(query), isEmpty: false});
       }
