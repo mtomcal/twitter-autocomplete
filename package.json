@@ -10,12 +10,15 @@
     "lodash": "^4.17.4",
     "mnemonist": "^0.10.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "superagent": "^3.4.4"
   },
   "scripts": {
+    "start:server": "cd node/ && npm start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "cd node/ && npm install"
   }
 }
