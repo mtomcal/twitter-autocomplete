@@ -14,6 +14,8 @@ Rolling a tweetbox with autocomplete for the usernames on the Twitter API.
 
 ## Install and Run
 
+I used Node v6.x.x to develop this.
+
 Clone this project and...
 
 ```

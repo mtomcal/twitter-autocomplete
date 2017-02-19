@@ -66,7 +66,7 @@ class App extends Component {
     this.pruneTrieData = this.pruneTrieData.bind(this);
 
     // Add a debounce for good measure to further throttle API usage in addition to Trie caching
-    this.executeSuggestions = _.debounce(this.executeSuggestions.bind(this), 200);
+    this.executeSuggestions = _.debounce(this.executeSuggestions.bind(this), 300);
   }
   pruneTrieData() {
     // Need to trim trie size if it gets too big (> 500 items) from caching all the username searches
